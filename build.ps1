@@ -222,7 +222,7 @@ process
 
 Begin
 {
-    # dynamically build the required module data file based on PowerStig.psd1 module manifest
+    # dynamically build the required module data file based on sshdsc.psd1 module manifest
     $requiredModulesContent = @'
 @{
     # Set up a mini virtual environment...
@@ -252,9 +252,9 @@ Begin
 '@
 
     $stringBuilder = New-Object -TypeName System.Text.StringBuilder -ArgumentList $requiredModulesContent
-    $powerStigModuleManifest = Import-PowerShellDataFile -Path (Join-Path -Path $PSScriptRoot -ChildPath '.\source\PowerStig.psd1')
-    $powerStigRequiredModule = $powerStigModuleManifest.RequiredModules
-    foreach ($requiredModule in $powerStigRequiredModule)
+    $sshdscModuleManifest = Import-PowerShellDataFile -Path (Join-Path -Path $PSScriptRoot -ChildPath '.\source\SshDsc.psd1')
+    $sshdscRequiredModule = $sshdscModuleManifest.RequiredModules
+    foreach ($requiredModule in $sshdscRequiredModule)
     {
         $moduleInfo = "    '{0}' = '{1}'" -f $requiredModule.ModuleName, $requiredModule.ModuleVersion
         [void] $stringBuilder.AppendLine($moduleInfo)
