@@ -1,0 +1,8 @@
+[ClassVersion("1.0.0.0"), FriendlyName("SshCommand")]
+class DSC_SshCommand : OMI_BaseResource
+{
+    [Key] String SshTestCommand;
+    [Write] String SshTestCommandValue;
+    [Write] String SshSetCommand;
+    [Write, EmbeddedInstance("MSFT_Credential")] String SshSessionCredential;
+};
